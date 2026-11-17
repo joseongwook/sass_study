@@ -1,0 +1,162 @@
+.title01 {
+  color: #ff0000;
+  background: #ffff00;
+}
+
+.title02 {
+  border: 2px solid #000000;
+  color: #0002ff;
+}
+
+.title01:hover {
+  border: 2px solid #000000;
+}
+
+.p01 {
+  width: 350px;
+  border: 1px solid #000000;
+  background: #ffff00;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.btn_reset {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid #cccccc;
+  padding: 0px 10px;
+  width: 170px;
+  height: 56px;
+}
+
+.btn_cart {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid #cccccc;
+  padding: 0px 10px;
+  width: 170px;
+  height: 56px;
+  background: #5f0080;
+  color: #ffffff;
+}
+
+.btn_toggle, .toggle {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.btn_toggle {
+  margin-bottom: 50px;
+}
+
+.bar1 {
+  background: #000000;
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  transition: 0.3s;
+  top: 8px;
+}
+
+.bar2 {
+  background: #000000;
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  transition: 0.3s;
+  top: 20px;
+}
+
+.bar3 {
+  background: #000000;
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  transition: 0.3s;
+  top: 32px;
+}
+
+.bar4 {
+  background: #000000;
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  transition: 0.3s;
+  top: 8px;
+}
+
+.bar5 {
+  background: #000000;
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  transition: 0.3s;
+  top: 20px;
+}
+
+.bar6 {
+  background: #000000;
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  transition: 0.3s;
+  top: 32px;
+}
+
+#toggle:checked + .btn_toggle .bar1 {
+  top: 18px;
+  transform: rotate(45deg);
+}
+#toggle:checked + .btn_toggle .bar2 {
+  opacity: 0;
+}
+#toggle:checked + .btn_toggle .bar3 {
+  top: 18px;
+  transform: rotate(-45deg);
+}
+#toggle:checked + .btn_toggle .bar4.active {
+  top: 18px;
+  transform: rotate(45deg);
+}
+#toggle:checked + .btn_toggle .bar5.active {
+  opacity: 0;
+}
+#toggle:checked + .btn_toggle .bar6.active {
+  top: 18px;
+  transform: rotate(-45deg);
+}
+
+.toggle .bar1 {
+  top: 18px;
+  transform: rotate(45deg);
+}
+.toggle .bar2 {
+  opacity: 0;
+}
+.toggle .bar3 {
+  top: 18px;
+  transform: rotate(-45deg);
+}
+.toggle .bar4.active {
+  top: 18px;
+  transform: rotate(45deg);
+}
+.toggle .bar5.active {
+  opacity: 0;
+}
+.toggle .bar6.active {
+  top: 18px;
+  transform: rotate(-45deg);
+}/*# sourceMappingURL=style01.css.map */

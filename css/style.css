@@ -1,0 +1,199 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+/* =========================================
+   1. 변수 정의 (SASS 컨셉 컬러 팔레트)
+========================================= */
+:root {
+  --sass-pink: #cd6799;
+  --sass-pink-light: #fdf2f7;
+  --sass-pink-border: #f3c6dc;
+  --bg-page: #f8f9fb;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-sub: #475569;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 8px 20px rgba(205, 103, 153, 0.12);
+}
+
+/* =========================================
+   2. 기본 초기화 및 레이아웃
+========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+}
+
+/* =========================================
+   3. 페이지 타이틀 (h2)
+========================================= */
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 36px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: -0.02em;
+}
+
+/* SASS 브랜드 뱃지 데코레이션 */
+h2::after {
+  content: 'SCSS / SASS CURRICULUM';
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--sass-pink);
+  background-color: var(--sass-pink-light);
+  border: 1px solid var(--sass-pink-border);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* =========================================
+   4. 일차별 학습 카드 (dl)
+========================================= */
+dl {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--sass-pink);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+dl:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =========================================
+   5. 일차 및 주제 제목 (dt)
+========================================= */
+dt {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+dt::before {
+  content: '#';
+  color: var(--sass-pink);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+/* =========================================
+   6. 실습 링크 리스트 (dd & a)
+========================================= */
+dd {
+  margin-bottom: 8px;
+}
+
+dd:last-child {
+  margin-bottom: 0;
+}
+
+dd a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--text-sub);
+  font-size: 0.96rem;
+  font-weight: 500;
+  padding: 11px 16px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* 좌측 파일 아이콘 포인트 */
+dd a::before {
+  content: '📄';
+  margin-right: 10px;
+  font-size: 0.9rem;
+  filter: grayscale(100%);
+  transition: filter 0.2s ease;
+}
+
+/* 우측 화살표 인디케이터 */
+dd a::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--text-muted);
+  font-weight: 700;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* 마우스 호버 인터랙션 */
+dd a:hover {
+  background-color: var(--sass-pink-light);
+  border-color: var(--sass-pink-border);
+  color: var(--sass-pink);
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+dd a:hover::before {
+  filter: grayscale(0%);
+}
+
+dd a:hover::after {
+  color: var(--sass-pink);
+  transform: translateX(4px);
+}
+
+/* =========================================
+   7. 반응형 (모바일 대응)
+========================================= */
+@media (max-width: 600px) {
+  body {
+    padding: 36px 16px 60px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  dl {
+    padding: 18px 20px;
+  }
+
+  dt {
+    font-size: 1.05rem;
+  }
+
+  dd a {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+}

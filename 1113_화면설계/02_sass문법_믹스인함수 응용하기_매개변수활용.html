@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02_sass문법_믹스인함수 응용하기_매개변수활용</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="./css/style1.css" type="text/css">
+</head>
+<body>
+  <h2>02_sass문법_믹스인함수 응용하기_매개변수활용</h2>
+
+  <h3>1. SNS 아이콘(페이스북, 엑스, 인스타그램, 카카오, 네이버)을 삽입하여 믹싱기법으로 서식적용하기</h3>
+  <ul class="sns">
+    <li><i class="fab fa-facebook-square"></i></li>
+    <li><i class="fa-brands fa-square-x-twitter"></i></li>
+    <li><i class="fab fa-instagram-square"></i></li>
+    <li><i class="fas fa-message"></i></li>
+  </ul>
+
+  <h3>2. @mixin 매개변수 처리하기</h3>
+  <p>@mixin 함수처럼 매개변수와 인수값을 가질수 있습니다.</p>
+  <p>매개변수를 사용하여 다양한 결과물을 구현할 수 있습니다.</p>
+  <pre>
+    문법)
+    mixin 믹스인명($매개변수 ...){
+      //재사용할 식
+    }
+    @include 믹스인명(인수)
+  </pre>
+
+  <div id="box01">box01</div>
+  <div id="box02">box02</div>
+
+  <p>@mixin 함수안에 매개변수를 여러개 만들어서 값을 적용한다</p>
+
+  <h3>실습2. 네이버, 카카오 로그인 버튼을 만들고 @mixin 함수와 매개변수를 활용하여 서식적용하기</h3>
+  <div>
+    <p>
+      <input type="button" value="LOGIN" class="btn btn1"> <!-- 마켓컬리 로그인-->
+      <input type="button" value="LOGIN" class="btn btn2"> <!-- 네이버 로그인-->
+      <input type="button" value="LOGIN" class="btn btn3"> <!-- 카카오 로그인-->
+    </p>
+  </div>
+  <h3>@mixin 함수에 매개변수 기본값 설정하기</h3>
+  <p>매개변수는 기본값을 가질수 있습니다. @include 에서 별도의 인수를 전달하지 않으면 기본값으로 사용이 됩니다.</p>
+  <pre>
+    문법)
+    @mixin 믹스인명($매개변수:기본값){
+      //적용하고자하는 css서식;
+    }
+  </pre>
+
+  <h3>실습3. 목록태그를 작성하여 목록별 테두리 서식을 각각 다르게 설정하기</h3>
+  <ul class="list01">
+    <li>실선(기본값)으로 테두리 적용하기</li>
+    <li>굵은선(3px)으로 테두리 적용하기</li>
+    <li>이중선(double)으로 테두리 적용하기</li>
+    <li>점선(dotted)으로 테두리 적용하기</li>
+    <li>점선(dash)으로 테두리 적용하기</li>
+  </ul>
+
+  <h3>실습4. 테이블태그, @mixin 함수를 사용하여 11월 달력 UI구현하기</h3>
+  <table class="caleder">
+    <caption>11월 달력</caption>
+    <tr>
+      <th>일요일</th>
+      <th>월요일</th>
+      <th>화요일</th>
+      <th>수요일</th>
+      <th>목요일</th>
+      <th>금요일</th>
+      <th>토요일</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>16</td>
+      <td>17</td>
+      <td>18</td>
+      <td>19</td>
+      <td>20</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>23</td>
+      <td>24</td>
+      <td>25</td>
+      <td>26</td>
+      <td>27</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>30</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+
+  <section class="prd_section">
+    <h2>지역별 BEST 상품</h2>
+    <div class="wrap">
+      <div class="list_box left">
+        <ul>
+          <li>
+            <a href="#">
+              <div class="img_box">
+                <img src="./실습예제_지역별 best상품/images/tour_09.jpg" alt="투어">
+              </div>
+              <div class="price_wrap">
+                <p class="title_p">[HOT 인기상품] 『미서부를 대표하는 BEST 상품』[단독] 4대캐년 + 샌디에이고or라스베가스 특급호텔2박+디지니랜드 8일</p>
+              <span class="price">1,766,800<em class="won">원</em> ~</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="list_box right">
+        <ul>
+        <li>
+          <a href="#">
+            <div class="img_box">
+              <img src="./실습예제_지역별 best상품/images/tour_11.jpg" alt="투어">
+            </div>
+            <div class="price_wrap">
+              <p class="title_p">[NEW 인기상품] 『오감만족 미서부 100% 즐기기』 [단독] 4대캐년 + 라스</p>
+              <span class="info_p">
+                세상에서 가장 화려한도시 라스베가스<br> ★주말 2연박★을 통한 여유로운 미서부 여행
+              </span>
+              <span class="price">2,066,800<em class="won">원</em> ~</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img_box"><img src="./실습예제_지역별 best상품/images/tour_23.jpg" alt="투어"></div>
+            <div class="price_wrap">
+              <p class="title_p">인도는 품격있게』 [국내선2회&특급호텔] 단독 북인도9일(갠지스</p>
+              <span class="price">1,933,200<em class="won">원</em> ~</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img_box"><img src="./실습예제_지역별 best상품/images/tour_43.jpg" alt="투어"></div>
+            <div class="price_wrap">
+              <p class="title_p">『2019年 명절 출발보장』 [단독] 명절 맞이 미서부 완전 정복 9일</p>
+              <span class="price">2,435,000<em class="won">원</em> ~</span>
+            </div>
+          </a>
+        </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 실전테스트_todolist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<style>
+  *{margin:0;padding:0;box-sizing: border-box;}
+  ul,ol,li{list-style: none;}
+  .wrap{margin-top: 50px;margin-left: 20px;}
+  input[type=text]{border:2px solid #FF5800;width: 350px;font-size:16px;padding: 10px;margin-bottom: 10px;}
+  #button{padding: 14px; background:#FF5800; border:none; cursor: pointer;color: #ffffff;}
+  section{width: 350px;}
+  section p{margin-bottom: 10px;}
+  #delete_btn{background-color: #FF5800;border: none; cursor: pointer;color: #ffffff; padding: 4px 8px;}
+  #result_list{margin-bottom: 10px;}
+  #result_list li{border: 1px solid #FF5800;position: relative;padding: 8px 10px 8px 10px; cursor: pointer; display: flex; align-items: center;}
+  
+  /* 커스텀 동그라미 체크박스 디자인 */
+  #result_list li input[type=checkbox]{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FF5800;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+    position: relative;
+    background-color: #fff;
+    flex-shrink: 0;
+  }
+
+  /* 체크되었을 때 주황색 채우기 및 내부 체크 아이콘 표시 */
+  #result_list li input[type=checkbox]:checked {
+    background-color: #FF5800;
+  }
+
+  #result_list li input[type=checkbox]:checked::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+  }
+
+  /* 텍스트 영역 정렬 및 여백 */
+  #result_list li span {
+    flex-grow: 1;
+    word-break: break-all;
+    padding-right: 40px; /* 삭제 버튼 공간 확보 */
+  }
+</style>
+<body>
+  <h2>자바스크립트 실전테스트_todolist</h2>
+  <dl>
+    <dt>오늘의 일정 구현하기</dt>
+    <dd>1. 입력폼과 '추가'버튼, '글삭제'버튼을 작성</dd>
+    <dd>2. 입력폼에 글입력하고 '추가'버튼 클릭시 아래 목록으로 내용 출력</dd>
+    <dd>3. 출력된 내용 옆 '삭제'버튼 추가</dd>
+    <dd>4. '삭제'버튼 클릭시 해당 글 삭제</dd>
+    <dd>5. 해당 목록글 클릭시 동그란 체크박스 체크 및 '취소선' 표시</dd>
+    <dd>6. '글삭제'버튼 클릭시 전체 글 삭제</dd>
+  </dl>
+
+  <div class="wrap">
+    <header>
+      <h2>오늘의 할일 - todolist(입력,출력,삭제)</h2>
+      <div>
+        <input type="text" placeholder="오늘의 일정을 입력하세요" id="add_value">
+        <button type="button" id="button">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <p><button type="button" id="delete_btn">글모두삭제</button></p>
+        <ul id="result_list">
+          <li><div id="result">아래에 작성된 내용이 출력 됩니다.</div></li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <address>Copyright&copy;2026 오늘의 할일 allrights reserved.</address>
+    </footer>
+  </div>
+
+<script>
+    const addValue = document.getElementById('add_value'); 
+    const buttOn = document.getElementById('button'); 
+    const deleteBtn = document.getElementById('delete_btn'); 
+    const reSult = document.getElementById('result_list'); 
+
+    buttOn.addEventListener('click', function(){
+      addTo();
+    });
+
+    addValue.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        addTo();
+      }
+    });
+
+    function addTo(){
+      if(addValue.value === ''){
+        alert('뭔가를 입력하셔용.');
+      } else {
+        const defaultMsg = document.getElementById('result');
+        if(defaultMsg){
+          defaultMsg.parentElement.remove();
+        }
+
+        let list = document.createElement('li');
+        let checkbox = document.createElement('input'); 
+        let textSpan = document.createElement('span');     
+        let del = document.createElement('button');
+
+        checkbox.type = 'checkbox';
+        textSpan.innerHTML = addValue.value; 
+
+        reSult.appendChild(list); 
+        list.appendChild(checkbox);
+        list.appendChild(textSpan);
+        list.appendChild(del); 
+
+        addValue.value = ''; 
+        addValue.focus(); 
+
+        del.innerHTML = '삭제';
+        del.style.fontSize = '12px';
+        del.style.border = 'none';
+        del.style.background = 'none';
+        del.style.color = '#333333';
+        del.style.position = 'absolute';
+        del.style.right = '10px';
+        del.style.top ='50%';
+        del.style.transform = 'translateY(-50%)';
+        del.style.cursor = 'pointer';
+
+        list.addEventListener('click', function(e){
+          if(e.target === del) return; 
+
+          if(e.target !== checkbox){
+            checkbox.checked = !checkbox.checked;
+          }
+
+          if(checkbox.checked){
+            textSpan.style.textDecoration = 'line-through';
+            textSpan.style.color = 'gray';
+          } else {
+            textSpan.style.textDecoration = 'none';
+            textSpan.style.color = '#333333';
+          }
+        });
+
+        del.addEventListener('click', function(e){
+          let li_remove = e.target.parentElement;
+          li_remove.remove();
+          
+          if(reSult.children.length === 0){
+            reSult.innerHTML = '<li><div id="result">아래에 작성된 내용이 출력 됩니다.</div></li>';
+          }
+        });
+      }
+    };
+
+    deleteBtn.addEventListener('click', function(){
+      cleaerAll(); 
+    });
+
+    function cleaerAll(){
+      if(confirm('버튼을 클릭시 글 내용이 모두 삭제 됩니다. 정말 실행하시겠습니까?') === true){
+        if(reSult.children.length === 0){
+          alert('삭제 할 글 목록이 없습니다.');
+        } else {
+          reSult.innerHTML = '<li><div id="result">아래에 작성된 내용이 출력 됩니다.</div></li>';
+        }
+      } else {
+        return false;
+      }
+    }
+</script>
+</body>
+</html>

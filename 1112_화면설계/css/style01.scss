@@ -1,0 +1,65 @@
+@charset 'utf-8';
+
+
+$bg_color_y:#ffff00;
+$bg_color_bk:#000000;
+$text_color_r:#ff0000;
+$text_color_bl:#0002ff;
+$text_color_wh:#ffffff;
+$border_bk:2px solid #000000;
+$line_color_gr:#cccccc;
+$bg_color_main:#5f0080;
+
+
+@mixin h3txt{
+  color: $text_color_r;
+  background: $bg_color_y;
+}
+
+.title01{@include h3txt}
+.title02{border: $border_bk; color:$text_color_bl;}
+
+.title01:hover{border: $border_bk;}
+
+@mixin txt_over{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.p01{width: 350px; border: 1px solid #000000; background: $bg_color_y; @include txt_over;}
+
+// 1. 버튼 글자서식
+@mixin btnFont{font-family: "Noto Sans"; font-weight: bold; font-size: 20px;}
+
+// 2. 버튼 모양서식
+@mixin btnArea{border: 1px solid $line_color_gr; padding: 0px 10px; width: 170px; height: 56px;}
+
+// 3. 버튼 서식을 합치기
+@mixin btn{
+  @include btnFont();
+  @include btnArea();
+}
+.btn_reset{@include btn();}
+.btn_cart{@include btn(); background:$bg_color_main; color: $text_color_wh;}
+
+// 토글버튼 서식
+@mixin menuWrap{width: 40px;height: 40px;position: relative;display: block;cursor: pointer;}
+@mixin menuBar{background: $bg_color_bk; display: inline-block; width: 40px; height: 4px; position: absolute; transition: .3s;}
+@mixin activeBar{
+  .bar1 {top: 18px;transform: rotate(45deg);}
+  .bar2 {opacity: 0;}
+  .bar3 {top: 18px;transform: rotate(-45deg);}
+  .bar4.active {top: 18px;transform: rotate(45deg);}
+  .bar5.active {opacity: 0;}
+  .bar6.active {top: 18px;transform: rotate(-45deg);}
+}
+.btn_toggle,.toggle{@include menuWrap();}
+.btn_toggle{margin-bottom: 50px;}
+
+.bar1{@include menuBar(); top: 8px;}
+.bar2{@include menuBar(); top: 20px;}
+.bar3{@include menuBar(); top: 32px;}
+.bar4{@include menuBar(); top: 8px;}
+.bar5{@include menuBar(); top: 20px;}
+.bar6{@include menuBar(); top: 32px;}
+
+// css
+#toggle:checked + .btn_toggle {@include activeBar();}
+// js
+.toggle{@include activeBar();}

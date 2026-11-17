@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+.title_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title_wrap .btn_more1 {
+  font-size: 16px;
+  border-bottom: 2px solid #000000;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.promotion {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.promotion_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.promotion_wrap .promotion_list {
+  width: 24%;
+  position: relative;
+}
+
+.promotion_wrap .promotion_list .promotion_list_item {
+  position: relative;
+  display: block;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.promotion_wrap .promotion_list .promotion_list_item:hover::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+
+.promotion_wrap .promotion_list .promotion_list_item img {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.promotion_wrap .promotion_list a.btn_more {
+  font-size: 12px;
+  color: #888888 !important;
+}
+
+.promotion_wrap .promotion_list a span.progress {
+  position: absolute;
+  background: #023586;
+  color: #ffffff !important;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 10px;
+}
+
+.promotion_wrap .promotion_list span.c_title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.promotion_wrap .promotion_list span.c_title:hover, .promotion_wrap .promotion_list a.btn_more:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}/*# sourceMappingURL=style02.css.map */

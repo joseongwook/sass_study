@@ -1,0 +1,84 @@
+@charset 'utf-8';
+// 변수서식
+$base_width:1200px;
+$margin_auto:0 auto;
+$style_none:none;
+$bg_color_bl:#023586;
+$fc_color_wh:#ffffff;
+$fc_color_gr:#888888;
+
+*{margin: 0;padding: 0;}
+ol,ul,li{list-style: $style_none;}
+a{text-decoration: none;color: #333333;}
+
+@mixin proGress{position: absolute;background: $bg_color_bl; color:$fc_color_wh!important; font-size: 10px; font-weight:500;padding: 2px 10px;}
+@mixin moreBtn{font-size: 12px; color: $fc_color_gr!important;}
+@mixin cTitle{font-size: 18px;}
+@mixin textLine{text-decoration: underline;cursor: pointer;}
+@mixin hoverShadow{position: absolute; content: ''; bottom: 0;left: 0;right: 0;height: 80%;background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .5));}
+h3{font-size: 30px;}
+.title_wrap {display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
+.title_wrap .btn_more1{font-size: 16px;border-bottom: 2px solid #000000; display: inline-block; font-weight: bold;}
+.promotion{width:$base_width; margin: $margin_auto;}
+.promotion_wrap{width:100%; display: flex; justify-content: space-between;}
+.promotion_wrap .promotion_list{width: 24%;position: relative;}
+.promotion_wrap .promotion_list .promotion_list_item{position: relative;display: block; @include textLine();}
+.promotion_wrap .promotion_list .promotion_list_item:hover::after{@include hoverShadow();}
+.promotion_wrap .promotion_list .promotion_list_item img{width: 100%; display: block;margin-bottom: 20px;}
+.promotion_wrap .promotion_list a.btn_more{@include moreBtn();}
+.promotion_wrap .promotion_list a span.progress{@include proGress();}
+.promotion_wrap .promotion_list span.c_title{@include cTitle(); margin-bottom: 10px;display: block;}
+.promotion_wrap .promotion_list span.c_title:hover,.promotion_wrap .promotion_list a.btn_more:hover{@include textLine();}
+
+// .promotion {
+//   width: $base_width;
+//   margin: 0 auto;
+
+//   h3 {
+//     font-size: 30px;
+//     margin-bottom: 20px;
+//   }
+
+//   &_wrap {
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-between;
+//   }
+//   &_list {
+//     width: 24%;
+//     position: relative;
+//     &_item {
+//       position: relative;
+//       display: block;
+//       @include textLine;
+
+//       &:hover::after {
+//         @include hoverShadow;
+//       }
+//       img {
+//         width: 100%;
+//         display: block;
+//         margin-bottom: 20px;
+//       }
+
+//       .progress {
+//         @include proGress;
+//       }
+//     }
+
+//     .c_title {
+//       @include cTitle(); 
+//       margin-bottom: 10px;
+//       display: block;
+//     }
+
+//     .btn_more {
+//       @include moreBtn();
+//     }
+
+//     .c_title:hover,
+//     .btn_more:hover {
+//       @include textLine;
+//     }
+//   }
+// }

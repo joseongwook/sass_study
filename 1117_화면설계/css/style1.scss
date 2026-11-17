@@ -1,0 +1,68 @@
+@charset 'utf-8';
+div{height: 50px;margin-bottom: 10px;background: pink;}
+
+// @for $i from 1 to 6{
+//   div:nth-of-type(#{$i}){
+//     width: 50px*$i;
+//     /* 
+//     50*1 = 50
+//     50*2 = 100
+//     50*3 = 150
+//     50*4 = 200
+//     50*5 = 250
+//     */
+//   }
+// }
+
+
+// through 일 경우
+@for $i from 1 through 6{
+  div:nth-of-type(#{$i}){
+    width:100px * $i;
+  }
+}
+
+
+.list01 {
+  > li {
+    background: orange; // 1. 모든 li 태그의 배경색을 주황색으로 지정합니다.
+    margin-bottom: 10px; // 2. li 태그들 사이에 아래쪽 여백을 10px씩 줍니다.
+
+    $j: 1; // 3. 반복문을 시작하기 전, 변수 $j에 초기값 1을 할당합니다. (첫 번째 요소부터 시작)
+
+    @while $j <= 3 { // 4. $j 값이 3 이하일 동안(1, 2, 3 총 3번) 중괄호 안의 코드를 반복 실행합니다.
+      
+      &:nth-child(#{$j}) { 
+        // 5. &는 부모(.list01 > li)를 가리킵니다. 
+        // 즉, .list01 > li:nth-child(1), (2), (3) 순서로 선택자가 만들어집니다.
+        // #{...}는 변수 값을 문자열 안에 집어넣어 주는 '보간법'입니다.
+        
+        width: 100px * $j; 
+        // 6. 순서($j)에 따라 너비를 다르게 지정합니다.
+        // - 첫 번째 반복($j = 1): width: 100px;
+        // - 두 번째 반복($j = 2): width: 200px;
+        // - 세 번째 반복($j = 3): width: 300px;
+      }
+      
+      $j: $j + 1; // 7. 반복이 한 번 돌 때마다 $j 값을 1씩 증가시킵니다. (무한 루프 방지용)
+    }
+  }
+}
+
+
+// List배열 서식적용하기
+$color:red, blue, green;
+article{
+  h2:nth-child(1){background:nth($color,1);}
+  h2:nth-child(2){background:nth($color,2);}
+  h2:nth-child(3){background:nth($color,3);}
+}
+
+
+// map배열 서식적용하기
+$fontSize:('large':30px, 'medium':24px, 'small':18px);
+section{
+  h2:nth-child(1){font-size:map-get($fontSize, 'large'); color:nth($color,1);}
+  h3:nth-of-type(1){font-size:map-get($fontSize, 'medium'); color:nth($color,2);}
+  h4:nth-of-type(1){font-size:map-get($fontSize, 'small'); color:nth($color,3);}
+}

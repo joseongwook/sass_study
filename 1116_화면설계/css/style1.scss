@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+$myFont:'맑은 고딕',arial, sans-serif;
+$baseFontColor:#333;
+$bigFontSize:30px;
+$baseFontSize:12px;
+$boxWidth:1280px;
+$boxCenter:0 auto;
+$bgColor:#ff0;
+
+body{
+  $p01:#f00;
+  font{
+    family:$myFont;
+    size:$baseFontSize;
+    color:$baseFontColor;
+  }
+  h1{
+    font-size: $bigFontSize;
+    text-align: center;
+  }
+  #wrap{
+    $bgColor01:#0f0;
+    background: $bgColor;
+    border: 1px solid $bgColor01;
+    margin:$boxCenter;
+  }
+}

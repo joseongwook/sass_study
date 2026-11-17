@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCSS 마우스 오버 메뉴</title>
+  <link rel="stylesheet" href="./css/exec.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="banner">
+      <div class="banner_img">
+          <img src="./images/img1.jpg" class="active" alt="모두페이 즉시할인">
+          <img src="./images/img2.jpg" alt="신한카드 캐시백">
+          <img src="./images/img3.jpg" alt="우리카드 청구할인">
+          <img src="./images/img4.jpg" alt="롯데카드 결제일 할인">
+      </div>
+
+      <ul class="banner_menu">
+        <li class="active">모두페이 즉시할인</li>
+        <li>신한카드 캐시백</li>
+        <li>우리카드 청구할인</li>
+        <li>롯데카드 결제일 할인</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const menu = document.querySelectorAll('.banner_menu li');
+    const images = document.querySelectorAll('.banner_img img');
+    menu.forEach(function(item, index) {
+        item.addEventListener('mouseenter', function() {
+            menu.forEach(function(item) {
+                item.classList.remove('active');
+            });
+            images.forEach(function(item) {
+                item.classList.remove('active');
+            });
+            item.classList.add('active');
+            images[index].classList.add('active');
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+@charset 'utf-8';
+// 디바이스별 해상도 기준
+$width1 :1200px;  //pc
+$width2 :1024px;  //tablet - base해상도
+$width2_1:768px;  //tablet - small해상도
+$width3 :390px;   //mobile
+
+
+// div 기본서식
+@mixin box{
+  height: 50px;
+  border: 3px solid #000000;
+  margin-bottom: 20px;
+}
+
+div{@include box();}
+
+.pc{width: $width1; background: if($width1>500, pink, lightblue);}
+.tablet{width: $width2; background: if($width2>500, pink, lightblue);}
+.mobile{width: $width3; background: if($width3>500, pink, lightblue);}
+
+// 실습2
+.box03{
+  $width4:768px;
+  @if($width4>=768){//테블릿 해상도일 경우 아래 서식 적용
+    background: pink;
+  }@else{
+    background: #ffff00;
+  }
+}
+
+.box04{
+  width: $width2;
+  @if($width2>=1024){
+    background: #ffff00;
+  }@else{
+    background: #cccccc;
+  }
+}

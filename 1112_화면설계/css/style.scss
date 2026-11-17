@@ -1,0 +1,10 @@
+@charset 'utf-8';
+
+// 변수명: 값
+$bg_color:#ffff00;
+$bg_color1:#cccccc;
+$margin_none:0px;
+
+h2{background:$bg_color;}
+p{color: $bg_color1;}
+dl dd{margin: $margin_none;}

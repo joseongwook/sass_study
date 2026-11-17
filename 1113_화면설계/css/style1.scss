@@ -1,0 +1,153 @@
+@charset 'utf-8';
+
+// 변수선언
+$baseTextColor:#333333;
+$pointTxtColor:#ff0000;
+$animationTime:0.3s;
+
+
+// sns 서식
+@mixin sns{
+  font-size: 30px;
+  color:$baseTextColor;
+}
+@mixin hover{
+  color:$pointTxtColor;
+  font-size: 34px;
+}
+
+.sns{ display: flex; justify-content: space-around; width: 200px; @include sns;}
+.sns li{list-style: none;}
+.sns li i{transition: $animationTime;}
+.sns li:hover i{@include hover; transform: translateY(-5px);}
+
+// @minxin 함수에 매개변수 할당하여 처리
+@mixin divBox($bgColor1, $borderColor1){
+  background:$bgColor1;
+  border: 3px solid $borderColor1;
+}
+
+#box01{@include divBox(#00ff00,#ff0000);}
+
+#box02{@include divBox(#ffff00,#0000ff);}
+
+
+// 로그인 버튼 서식
+@mixin btn{
+  width: 200px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+@mixin loginBtn($bgColor2, $textColor){
+  color: $textColor;
+  background: $bgColor2;
+}
+
+// 공통 버튼 서식
+.btn{@include btn;}
+
+// 마켓컬리 로그인버튼
+.btn1{@include loginBtn(#5f0080,#ffffff);}
+
+// 네이버 로그인버튼
+.btn2{@include loginBtn(#03a94d,#ffffff);}
+
+// 카카오 로그인버튼
+.btn3{@include loginBtn(#FEE500,#000000);}
+
+// 목록태그에 믹스인 함수 기본값 설정하기
+@mixin borderStyle($bw:1px, $bs:solid, $bc:#cccccc){
+  border:$bw $bs $bc;
+}
+
+.list01 li{@include borderStyle();}
+.list01 li:first-child{}
+.list01 li:nth-child(2){@include borderStyle(3px, solid, #ff0000);}
+.list01 li:nth-child(3){@include borderStyle(3px, double, #0000ff);}
+.list01 li:nth-child(4){@include borderStyle(2px, dotted, #00ff00);}
+.list01 li:last-child{@include borderStyle(4px, dashed, #ffff00);}
+
+
+// 실습4. 달력서식
+$tableWidth:600px;
+@mixin borDer($bw:1px, $bs:solid, $bc:#0000ff){
+  border: $bw $bs $bc;
+  border-collapse: collapse;
+}
+@mixin capTion($bg:#ffff00){
+  background: $bg;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.caleder{@include borDer(); width: $tableWidth;}
+.caleder caption{@include capTion();}
+.caleder th, .caleder td{@include borDer();}
+
+// 홀수번째, 짝수번쨰 서식
+@mixin oddTr($bg:#fcfce4){
+  background: $bg;
+}
+
+@mixin evenTr($bg:#4dd3b1){
+  background: $bg;
+}
+
+.caleder tr:nth-child(odd){@include oddTr();}
+.caleder tr:nth-child(even){@include evenTr();}
+
+
+// 실습 서식
+// 변수선언
+$boxSizing:border-box;
+$baseWidth:1100px;
+$marginCenter:0 auto;
+
+*{margin: 0;padding: 0;}
+.prd_section{width: $baseWidth; margin: $marginCenter;box-sizing: $boxSizing;}
+@mixin listStyle{list-style: none;}
+@mixin textDecoration{text-decoration: none;}
+@mixin titleP($fontColor,$fontSize,$fontWeight){
+  color:$fontColor;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+}
+
+@mixin infoP($fontColor,$fontSize,$fontWeight){
+  color:$fontColor;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+}
+@mixin borderBottom{border-bottom: 1px solid #cccccc;}
+@mixin marginBottom{margin-bottom:20px;}
+@mixin priceStyle{font-style: normal;color: #ff0000;font-weight: 600;}
+
+@mixin h2($fontColor,$bgColor){
+  color: $fontColor;
+  background: $bgColor;
+  font-weight: 500;
+}
+img{width: 100%;display: block}
+h2{@include h2(#ffffff, #45A0CF);padding: 10px 0; text-align: center; margin-top: 100px; @include marginBottom();}
+.title_p{@include titleP(#333333, 14px, bold); @include marginBottom();}
+.info_p{@include infoP(#333333, 14px, 400);}
+ul,li{@include listStyle();}
+a{@include textDecoration();}
+.wrap{display: flex;justify-content: space-between;padding: 0 2%;}
+.list_box{display: flex;flex-shrink: 1;}
+.list_box.left  li a .img_box{@include marginBottom();}
+.list_box li a:hover{text-decoration: underline;color: #000000;}
+.list_box.left .price_wrap{display: flex; flex-direction: column; justify-content: center;position: relative;}
+.list_box.left .price_wrap .price{@include priceStyle(); position: absolute; right: 0;bottom: -60px;}
+
+.list_box.right li{padding-bottom: 20px; @include borderBottom();@include marginBottom();}
+.list_box.right li:last-child{margin-bottom: 0;}
+.list_box.right li a{display: flex; gap: 20px;}
+.list_box.right li a .img_box{width: 100%; max-width: 245px;}
+.list_box.right .price_wrap {display: flex;flex-direction: column;align-items: center; justify-content: center;position: relative;}
+.list_box.right .price_wrap .price{@include priceStyle(); position: absolute; right: 0;bottom: 0; }
+.price_wrap .won{@include priceStyle();font-size: 13px;font-weight:400;}
+.left{width: 49%;}
+.right{width: 49%;}

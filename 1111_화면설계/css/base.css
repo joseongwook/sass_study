@@ -1,0 +1,17 @@
+@charset 'utf-8';
+
+--root{
+  --base_color:#333333;
+}
+
+/* 2번 방식 SMACSS 방법론 css */
+*{margin: 0;padding: 0;}
+ul,ol,li{list-style: none;}
+a{text-decoration: none; color: var(--base_color);}
+body{font-family: '맑은 고딕', arial, sans-serif; font-size: 15px; color: var(--base_color);}
+h2,h3,p{padding: 3px;}
+h3{margin-top: 10px;}
+ol{margin-left: 20px;}
+ol li{list-style: circle;}
+dl{padding-left: 20px;}
+dl dt{font-weight: bold; padding-top: 6px;}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sass소개와 문법</title>
+  <link rel="stylesheet" href="./style/style.css" type="text/css">
+</head>
+<body>
+  <h2>sass소개와 문법</h2>
+  <p>SASS - Syntactically Awesom StyleSheets의 줄임말</p>
+  <p>SCSS - Sassy CSS의 줄임말</p>
+  <p>CSS pre-processor(전처리기)로서 CSS반봅을 줄여서 절약할 수 있도록 해주는 css언어의 확장언어이다.</p>
+  <p>CSS를 좀더 효율적으로 작성하고, 유지보수하기 쉽게 만들어 준다.</p>
+  <p>장점 : 변수 및 조건문 등의 새로운 문법을 통해 css를 구조화 하여 작업할 수 있습니다.</p>
+  <p>단점 : 코드가 지저분해질 수 있고, 코드가 많아질수록 유지보수가 어렵습니다.</p>
+  <p>vscode에서는 별도로 확장프로그램(live sass compier)을 지원하기 때문에 왼쪽 메뉴 아이콘'extensition'을 클릭하여 설치, 사용한다.</p>
+  <h3>1. SASS, SCSS 문법의 차이</h3>
+  <dl>
+    <dt>SASS 문법</dt>
+    <dd>중괄호({})와 세미콜론(;)이 필요 없습니다.</dd>
+    <dd>들여쓰기(tab)를 사용하여 코드 구조를 나타냅니다.</dd>
+    <dd>구문이 더 간결하고 python 스타일과 비슷합니다.</dd>
+  </dl>
+
+  <pre>
+    SASS 작성예시)
+    $primary-color:#3498db;
+    body
+      background:$primary-color;
+      color:#ffffff;
+
+    nav
+      ul
+        margin:0px;
+        padding:0px;
+        li
+          list-stlye:none;
+          margin-right:10px;
+  </pre>
+  <dl>
+    <dt>SCSS문법</dt>
+    <dd>css문법과 매우 유사합니다.</dd>
+    <dd>중괄호({})와 세미콜론(;)을 사용합니다.</dd>
+    <dd>기존 CSS와 호환성이 높습니다.</dd>
+  </dl>
+  <pre>
+    SCSS 작성예시)
+    $primary-color:#3498db;
+    body{
+      background:$primary-color;
+      color:#ffffff;
+    }
+    nav{
+      ul{
+        margin:0;
+        padding:0;
+        list-style:none;
+        
+        li{
+          display:inlne-block;
+          margin-right:10px;
+        }
+      }
+    }
+  </pre>
+
+  <h3>SASS, SCSS 둘중 어느것을 작성하는게 좋은가?</h3>
+  <dl>
+    <dt>SCSS 권장</dt>
+    <dd>CSS와 문법이 거의 같아 기존 CSS파일과 통합하기 쉽습니다.</dd>
+    <dd>팀원들이 CSS에 익숙하다면 SCSS가 더 쉽게 받아들여질 수 있습니다.</dd>
+    <dd>최신 문법과 기능이 주로 SCSS에서 지원되며, SASS는 유지 보수용으로만 사용됩니다.</dd>
+    <dd>SASS 공식 문서에서도 SCSS 사용을 권장하고 있습니다.</dd>
+    <dt>SASS 사용 이유</dt>
+    <dd>더 간결한 문법을 선호하거나, 기존 SASS 스타일을 유지해야 하는 프로젝트에 유리합니다.</dd>
+    <dt>결론</dt>
+    <dd>SCSS를 사용하는 것을 권장</dd>
+    <dd>더 널리 사용되며, 유지 보수 및 협업에 유리합니다.</dd>
+    <dd>최신 기능 지원 및 CSS와의 호환성도 뛰어납니다.</dd>
+  </dl>
+
+</body>
+</html>
